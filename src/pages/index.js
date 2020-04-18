@@ -31,6 +31,7 @@ const container = {
 
 const IndexPage = () => (
   <div style={container}>
+    <h1 align="center">{quitDate}</h1>
     <h1 align="center">{getMonthFromNow()}</h1>
     <h1 align="center">before {getDays()} days</h1>
     <h1 align="center">{moneySaved()}$ saved </h1>
