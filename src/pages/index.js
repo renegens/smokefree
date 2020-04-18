@@ -9,7 +9,7 @@ const averageSmokesPerDay = 15
 const smokesPerPack = 20
 
 function getDays() {
-  return moment().diff(quitTimeAndDate, "days") // 1 day
+  return moment().diff(quitTimeAndDate, "days")
 }
 
 function getMonthFromNow() {
