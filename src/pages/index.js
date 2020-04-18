@@ -1,21 +1,40 @@
 import React from "react"
-import { Link } from "gatsby"
+import moment from "moment"
 
-import Layout from "../components/layout"
-import Image from "../components/image"
-import SEO from "../components/seo"
+const quitDate = "2019.09.24"
+const quitTime = "14:00"
+const quitTimeAndDate = moment(quitDate + " " + quitTime)
+const pricePerPack = 4
+const averageSmokesPerDay = 15
+const smokesPerPack = 20
+
+function getDays() {
+  return moment().diff(quitTimeAndDate, "days") // 1 day
+}
+
+function getMonthFromNow() {
+  return moment(quitDate, "YYYY.MM.DD").fromNow()
+}
+
+function moneySaved() {
+  return Math.round((getDays() * averageSmokesPerDay) / smokesPerPack) * pricePerPack
+}
+
+const container = {
+  alignItems: "center",
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  height: "100vh",
+  width: "100vw"
+}
 
 const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link>
-  </Layout>
+  <div style={container}>
+    <h1 align="center">{getMonthFromNow()}</h1>
+    <h1 align="center">before {getDays()} days</h1>
+    <h1 align="center">{moneySaved()}$ saved </h1>
+  </div>
 )
 
 export default IndexPage
